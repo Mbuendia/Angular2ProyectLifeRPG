@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+<head>
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+    <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
+ <!-- Polyfills for older browsers -->
+    <script src="https://unpkg.com/core-js/client/shim.min.js"></script>
+
+    <script src="https://unpkg.com/zone.js@0.6.25?main=browser"></script>
+    <script src="https://unpkg.com/reflect-metadata@0.1.8"></script>
+    <script src="https://unpkg.com/systemjs@0.19.39/dist/system.src.js"></script>
+    <script src="https://cdn.rawgit.com/angular/angular.io/b3c65a9/public/docs/_examples/_boilerplate/systemjs.config.web.js"></script>
+    <script>
+      System.import('app').catch(function(err){ console.error(err); });
+    
+      
+    </script>
+  </head>
+<body>
+
+  
+<div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#!" class="brand-logo">&nbsp;Logo</a>
+       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">&nbsp;Menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">Tu</a></li>
+        <li><a href="#">Atributos</a></li>
+        <li><a href="#">Inventario</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="#">Tu</a></li>
+        <li><a href="#">Atributos</a></li>
+        <li><a href="#">Inventario</a></li>
+      </ul>
+      </div>
+    </nav>
+  </div>
+  <my-app><!-- content managed by Angular --></my-app>
+
+<h2 class="header">&nbsp;Level <span id="Level">1</span></h2>
+<div class="progress">
+      <div class="determinate" style="width: 0%"></div>
+  </div>
+  <div class="container">
+    <div class="card">
+    <!--  <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="http://placeimg.com/320/240/any">
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">Some information</i></span>
+        <p><a >Done</a>
+        </p>
+      </div>-->
+     
+    </div>
+  </div>
+
+  <div class="fixed-action-btn">
+  <a id="add" class=" waves-effect waves-circle waves-light red btn-floating btn-large "><i class="material-icons">+</i></a>
+  </div>
+   
+</body>
+<script type="text/javascript">
+$( document ).ready(function(){
+
+	 $(".button-collapse").sideNav();
+})
+
+	var Lvl = parseInt($('#Level').text());
+  
+$('#add').click(function() {
+	var progress =  parseInt($('.determinate').attr('style').slice(6,9));
+	var value = 10;
+  var  classname ="card";
+  var text ="<div class='card-content'><span class='card-title activator grey-text text-darken-4'>Card Title<i class='material-icons right'>Some information</i></span><p><a >Click to done</a> value= 4</p></div>";
+d = document.createElement('div');
+ Materialize.showStaggeredList('.card');
+$(d).addClass(classname)
+    .html(text)
+    .appendTo($(".card"))
+     //main div
+.click(function () {
+
+progress=parseInt($('.determinate').attr('style').slice(6,9))+value;
+
+if(progress<=95){
+		
+
+	
+	console.log(progress);
+	$('.determinate').attr('style', 'width: '+ progress +'%');
+    $(this).remove();
+ }else{
+ 	console.log(Lvl);
+		value = 0;
+		Lvl=Lvl+1;
+		
+		$('#Level').text(Lvl);
+		$('.determinate').attr('style','width: 0%' );
+ }
+});
+
+});
+</script>
+</html>
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello Angular</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      body {color:#365;font-family: Arial,Helvetica,sans-serif;}
+    </style>
+
+   
+</html>
+
+
+<!-- 
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->
